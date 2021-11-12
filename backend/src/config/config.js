@@ -1,11 +1,11 @@
 const config = {
     development: {
-        port: 3000,
+        port: 5000,
         DB_CONNECTION: 'mongodb+srv://dnikolov:netcarshow@cluster0.jwobt.mongodb.net/ePUBlicritic?retryWrites=true&w=majority',
     },
 
     production: {
-        port: 3000,
+        port: 5000,
         DB_CONNECTION: 'mongodb+srv://dnikolov:netcarshow@cluster0.jwobt.mongodb.net/ePUBlicritic?retryWrites=true&w=majority',
     }
 };
