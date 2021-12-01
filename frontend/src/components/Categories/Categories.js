@@ -22,7 +22,7 @@ function Categories() {
                 </div>
                 <div className="detail-box">
                   <h5>
-                    <Link to="/categories/textbooks"> Textbooks </Link>
+                    <Link to="/categories/books"> Textbooks </Link>
                   </h5>
                   <p>
                     fact that a reader will be distracted by the readable content of a page when looking at its layout.

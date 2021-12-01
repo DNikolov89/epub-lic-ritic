@@ -1,28 +1,25 @@
-import { Routes, Route } from "react-router-dom";
+import { useState } from 'react';
 
-import SliderSection from './components/SliderSection/SliderSection';
 import Header from './components/Header/Header';
-import Categories from './components/Categories/Categories';
-import About from './components/About/About';
-import ContactSection from './components/ContactSection/ContactSection';
-import InfoSection from './components/InfoSection/InfoSection';
-import Login from "./components/Login/Login";
-import Register from "./components/Register/Register";
+import LoggedUserView from "./components/LoggedUserView/LoggedUserView";
+import GuestView from "./components/GuestView/GuestView";
+import AuthContext from './contexts/AuthContext';
 
 function App() {
+
+  let [isLogged, setIsLogged] = useState(false);
+  let [loggedUserData, setLoggedUserData] = useState({});
+
+
   return (
     <>
-        <Header />
+      <Header isLogged={isLogged} />
 
-      <Routes>
-        <Route path="/home" element={<SliderSection />} />
-        <Route path="/categories" element={<Categories />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/contacts" element={<ContactSection />} />
-        <Route path="/info" element={<InfoSection />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/register" element={<Register />} />
-      </Routes>
+      <AuthContext.Provider value={{ setIsLogged, setLoggedUserData }}>
+        {isLogged
+          ? <LoggedUserView />
+          : <GuestView />}
+      </AuthContext.Provider>
 
       <footer className="footer_section">
         <div className="container">
@@ -35,5 +32,6 @@ function App() {
     </>
   );
 };
+
 
 export default App;
