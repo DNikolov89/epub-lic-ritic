@@ -1,9 +1,12 @@
 import './Register.css'
+
 import { useNavigate } from 'react-router-dom';
 import { useState, useContext } from 'react';
-import AuthContext from '../../contexts/AuthContext';
 
-import * as authService from '../../services/authService.js';
+import AuthContext from '../../../contexts/AuthContext';
+
+import * as authService from '../../../services/authService.js';
+import * as userService from '../../../services/userService';
 
 function Register() {
 
@@ -12,16 +15,16 @@ function Register() {
 
     let [passwordMissmatch, setPasswordMissmatch] = useState(false);
     let [emptyFields, setEmptyFields] = useState(false);
+    let [userIsRegistered, setuserIsRegistered] = useState(false);
 
     const submitHandler = async (e) => {
         e.preventDefault();
 
         setPasswordMissmatch(false);
         setEmptyFields(false);
+        setuserIsRegistered(false);
 
-        let form = e.currentTarget;
-
-        let formData = new FormData(form);
+        let formData = new FormData(e.currentTarget);
         let data = Object.fromEntries(formData);
         let { firstName, lastName, email, password, confirmPassword } = data;
 
@@ -34,6 +37,12 @@ function Register() {
         }
 
         try {
+            let existingUser = await userService.getOneByEmail(email);
+
+            if (existingUser) {
+                return setuserIsRegistered(true);
+            };
+        
             let registeredUser = await authService.register(data);
 
             if (registeredUser) {
@@ -69,6 +78,7 @@ function Register() {
                             <input type="text" name="email" id="email" placeholder="Email" />
                         </span>
                     </p>
+                    {userIsRegistered && <div style={{ color: 'red' }}>User with that email already exists!</div>}
                     <p className="field">
                         <label htmlFor="password">Password</label>
                         <span className="input">

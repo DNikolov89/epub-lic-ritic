@@ -11,9 +11,12 @@ const bookSchema = new mongoose.Schema({
     },
     year: {
         type: Number,
-        required: true
     },
     genre: {
+        type: String,
+        required: true
+    },
+    image: {
         type: String,
         required: true
     },
@@ -39,7 +42,11 @@ const bookSchema = new mongoose.Schema({
             type: mongoose.Types.ObjectId,
             ref: 'Post'
         }
-    ]
+    ],
+    _ownerId: {
+        type: mongoose.Types.ObjectId,
+        ref: 'User'
+    },
 });
 
 const Book = mongoose.model('Book', bookSchema);

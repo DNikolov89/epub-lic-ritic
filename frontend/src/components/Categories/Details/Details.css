@@ -1,0 +1,32 @@
+#details-wrapper {
+    flex-direction: column;
+}
+
+#details-img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 1%;
+    margin-bottom: auto;
+}
+
+#details-content-wrapper {
+    padding-top: 10px;
+    text-align: center;
+}
+
+#details-button-wrapper {
+    text-align: center;
+}
+
+#edit-button {
+    background-color:seagreen;
+    color: #FFFFFF;
+    border-radius:15px
+}
+
+#delete-button {
+    background-color:red;
+    color: #FFFFFF;
+    border-radius:15px
+}

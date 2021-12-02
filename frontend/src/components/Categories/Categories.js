@@ -1,6 +1,9 @@
 import { Link } from "react-router-dom";
 
-function Categories() {
+function Categories({
+  setBookCategory,
+}) {
+
 
   return (
     <section className="catagory_section layout_padding">
@@ -22,7 +25,7 @@ function Categories() {
                 </div>
                 <div className="detail-box">
                   <h5>
-                    <Link to="/categories/books"> Textbooks </Link>
+                    <Link onClick={() => setBookCategory('classic')} to="/categories/classic"> Classics </Link>
                   </h5>
                   <p>
                     fact that a reader will be distracted by the readable content of a page when looking at its layout.
@@ -39,7 +42,7 @@ function Categories() {
                 </div>
                 <div className="detail-box">
                   <h5>
-                    <Link to="/categories/science"> Science </Link>
+                    <Link onClick={() => setBookCategory('science')} to="/categories/science"> Science </Link>
                   </h5>
                   <p>
                     fact that a reader will be distracted by the readable content of a page when looking at its layout.
@@ -56,7 +59,7 @@ function Categories() {
                 </div>
                 <div className="detail-box">
                   <h5>
-                    <Link to="/categories/history"> History </Link>
+                    <Link onClick={() => setBookCategory('history')} to="/categories/history"> History </Link>
                   </h5>
                   <p>
                     fact that a reader will be distracted by the readable content of a page when looking at its layout.
@@ -73,7 +76,7 @@ function Categories() {
                 </div>
                 <div className="detail-box">
                   <h5>
-                  <Link to="/categories/biography"> Biography </Link>
+                  <Link onClick={() => setBookCategory('biography')} to="/categories/biography"> Biography </Link>
                   </h5>
                   <p>
                     fact that a reader will be distracted by the readable content of a page when looking at its layout.
@@ -90,7 +93,7 @@ function Categories() {
                 </div>
                 <div className="detail-box">
                   <h5>
-                  <Link to="/categories/adventure"> Adventure </Link>
+                  <Link onClick={() => setBookCategory('adventure')} to="/categories/adventure"> Adventure </Link>
                   </h5>
                   <p>
                     fact that a reader will be distracted by the readable content of a page when looking at its layout.
@@ -107,7 +110,7 @@ function Categories() {
                 </div>
                 <div className="detail-box">
                   <h5>
-                  <Link to="/categories/fantasy"> Fantasy </Link>
+                  <Link onClick={() => setBookCategory('other')} to="/categories/other"> Other </Link>
                   </h5>
                   <p>
                     fact that a reader will be distracted by the readable content of a page when looking at its layout.
