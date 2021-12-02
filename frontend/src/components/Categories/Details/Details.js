@@ -1,16 +1,17 @@
 import { useEffect, useState } from 'react';
-import { Link, useParams } from 'react-router-dom';
+import { Link, useParams, useNavigate } from 'react-router-dom';
 
 import './Details.css';
 
 import { SERVER_MAIN_URL } from '../../../constants';
+import * as bookService from '../../../services/bookService';
 
 function Details() {
 
     let [book, setBook] = useState({});
     let { bookId, bookCategory } = useParams();
-
-    console.log(bookId)
+    let navigate = useNavigate();
+    
 
     useEffect(() => {
         fetch(`${SERVER_MAIN_URL}/ebooks/${bookCategory}/${bookId}`)
@@ -20,6 +21,14 @@ function Details() {
             })
             .catch(err => console.log(err))
     }, []);
+
+    async function onClickDeleteHandler(e) {
+        e.preventDefault();
+        
+        await bookService.deleteOneBook(bookId);
+
+        navigate(`/categories/${book.genre}`);
+    };
 
 
     return (
@@ -43,7 +52,7 @@ function Details() {
                     <button id="edit-button">Edit</button>
                 </Link>
                 <Link to={`/categories/${bookCategory}/${bookId}/delete`}>
-                    <button id="delete-button">Delete</button>
+                    <button onClick={onClickDeleteHandler} id="delete-button">Delete</button>
                 </Link>
             </div>
         </div>

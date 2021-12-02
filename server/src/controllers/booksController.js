@@ -1,4 +1,5 @@
 import { Router } from 'express';
+import mongoose from 'mongoose';
 
 import * as bookServices from '../services/bookServices.js'
 
@@ -65,15 +66,24 @@ router.get('/other', async (req, res) => {
 
 router.get('/:bookCategory/:bookId', async (req, res) => {
     let { bookId } = req.params;
-    console.log(bookId)
+
     try {
         let book = await bookServices.getOneBook(bookId);
-        console.log(book)
+
         res.json(book);
     } catch (err) {
         console.log(err);
     }
-    
+});
+
+router.post('/:bookId/delete', async (req, res) => {
+    let bookId = req.body;
+    try {
+        let confirm = await bookServices.deleteOne(bookId);
+        res.send(confirm);
+    } catch (err) {
+        console.log(err);
+    }
 })
 
 export default router;
