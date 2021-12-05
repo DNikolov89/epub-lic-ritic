@@ -29,11 +29,17 @@ export const editBook = (bookData) => {
 };
 
 export const vote = (bookId, userId, vote) => {
-    
+
     return fetch(`${SERVER_MAIN_URL}/ebooks/${bookId}/vote`, {
         method: "POST",
         headers: { "content-type": "application/json" },
         body: JSON.stringify({ bookId, userId, vote })
     })
+        .then(res => res.json())
+};
+
+export const getLastTreeBooks = () => {
+
+    return fetch(`${SERVER_MAIN_URL}/ebooks/last-tree-books`)
         .then(res => res.json())
 }

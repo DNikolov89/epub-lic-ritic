@@ -64,6 +64,12 @@ router.get('/other', async (req, res) => {
     res.json(books);
 });
 
+router.get('/last-tree-books', async (req, res) => {
+    let books = await bookServices.getLastTree();
+    
+    res.json(books);
+});
+
 router.get('/:bookCategory/:bookId', async (req, res) => {
     let { bookId } = req.params;
 

@@ -1,4 +1,18 @@
+import { useState, useEffect } from "react";
+
+import * as bookService from '../../services/bookService';
+
 function Main() {
+
+  let [lastTreeBooks, setLastTreeBooks] = useState([]);
+
+  useEffect(() => {
+    bookService.getLastTreeBooks()
+      .then(books => setLastTreeBooks(books))
+      .catch(err => console.log(err))
+  }, []);
+
+
   return (
     <>
       <div className="hero_area">
@@ -110,86 +124,41 @@ function Main() {
         <div className="container ">
           <div className="heading_container heading_center">
             <h2>
-              What Says Customers
+              Last books uploaded
             </h2>
             <hr />
           </div>
           <div className="row">
-            <div className="col-md-6 mx-auto">
-              <div className="client_container ">
-                <div className="detail-box">
-                  <p>
-                    Editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by
-                  </p>
-                  <span>
-                    <i className="fa fa-quote-left" aria-hidden="true"></i>
-                  </span>
-                </div>
-                <div className="client_id">
-                  <div className="img-box">
-                    <img src="images/c1.jpg" alt="" />
-                  </div>
-                  <div className="client_name">
-                    <h5>
-                      Jone Mark
-                    </h5>
-                    <h6>
-                      Student
-                    </h6>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="col-md-6 mx-auto">
-              <div className="client_container ">
-                <div className="detail-box">
-                  <p>
-                    Editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by
-                  </p>
-                  <span>
-                    <i className="fa fa-quote-left" aria-hidden="true"></i>
-                  </span>
-                </div>
-                <div className="client_id">
-                  <div className="img-box">
-                    <img src="images/c2.jpg" alt="" />
-                  </div>
-                  <div className="client_name">
-                    <h5>
-                      Anna Crowe
-                    </h5>
-                    <h6>
-                      Student
-                    </h6>
+
+            {lastTreeBooks.map(book => {
+              return (
+                <div className="col-md-6 mx-auto">
+                  <div className="client_container ">
+                    <div className="detail-box">
+                      <p>
+                        {book.description}
+                      </p>
+                      <span>
+                        <i className="fa fa-quote-left" aria-hidden="true"></i>
+                      </span>
+                    </div>
+                    <div className="client_id">
+                      <div className="img-box">
+                        <img src={book.image} alt="" />
+                      </div>
+                      <div className="client_name">
+                        <h5>
+                          {book.title}
+                        </h5>
+                        <h6>
+                          {book.author}
+                        </h6>
+                      </div>
+                    </div>
                   </div>
                 </div>
-              </div>
-            </div>
-            <div className="col-lg-6 mx-auto">
-              <div className="client_container ">
-                <div className="detail-box">
-                  <p>
-                    Editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by
-                  </p>
-                  <span>
-                    <i className="fa fa-quote-left" aria-hidden="true"></i>
-                  </span>
-                </div>
-                <div className="client_id">
-                  <div className="img-box">
-                    <img src="images/c3.jpg" alt="" />
-                  </div>
-                  <div className="client_name">
-                    <h5>
-                      Hilley James
-                    </h5>
-                    <h6>
-                      Student
-                    </h6>
-                  </div>
-                </div>
-              </div>
-            </div>
+              );
+            })}
           </div>
         </div>
       </section>
