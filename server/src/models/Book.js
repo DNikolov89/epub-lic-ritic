@@ -29,24 +29,25 @@ const bookSchema = new mongoose.Schema({
     },
     votes: [
         {
-            type: mongoose.Types.ObjectId,
-            ref: 'User'
-        }
-    ],
-    rating: {
-        type: Number,
-        default: 0
-    },
-    posts: [
-        {
-            type: mongoose.Types.ObjectId,
-            ref: 'Post'
+            votedUser:
+            {
+                type: mongoose.Types.ObjectId,
+                ref: 'User'
+            },
+            vote: {
+                type: Number,
+                default: 0
+            }
         }
     ],
     _ownerId: {
         type: mongoose.Types.ObjectId,
         ref: 'User'
     },
+    createdAt: {
+        type: Date,
+        default: new Date()
+    }
 });
 
 const Book = mongoose.model('Book', bookSchema);

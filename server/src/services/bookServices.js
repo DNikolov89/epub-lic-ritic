@@ -7,3 +7,6 @@ export const getAllByGenre = async (genre) => await Book.find({ genre });
 export const getOneBook = async (bookId) => await Book.findById(bookId);
 
 export const deleteOne = async (bookId) => await Book.findByIdAndDelete(bookId);
+
+export const editBook = async (bookId, bookData) => await Book.findByIdAndUpdate(bookId, bookData);
+

@@ -76,14 +76,36 @@ router.get('/:bookCategory/:bookId', async (req, res) => {
     }
 });
 
-router.post('/:bookId/delete', async (req, res) => {
+router.delete('/:bookId/delete', async (req, res) => {
     let bookId = req.body;
+
     try {
         let confirm = await bookServices.deleteOne(bookId);
         res.send(confirm);
     } catch (err) {
         console.log(err);
     }
+});
+
+router.put('/:bookId/edit', async (req, res) => {
+    let bookData = req.body;
+    let bookId = req.params.bookId;
+
+    let editedBook = await bookServices.editBook(bookId, bookData);
+
+    res.json(editedBook);
+});
+
+router.post('/:bookId/vote', async (req, res) => {
+    let { bookId, userId, vote } = req.body;
+ 
+    let book = await bookServices.getOneBook(bookId);
+    book.votes.push({userId, vote});
+    book.save();
+
+    console.log(book)
+
+    res.json({ok: true})
 })
 
 export default router;

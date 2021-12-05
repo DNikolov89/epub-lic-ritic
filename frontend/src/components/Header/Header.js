@@ -1,8 +1,13 @@
+import './Header.css'
+
 import { Link } from "react-router-dom";
 
 function Header({
-    isLogged
+    isLogged,
+    loggedUserData,
 }) {
+
+    //TODO: Да изкарам двете навигации като отделни променливи, които да връщат JSX-a в скоби.
 
     if (isLogged) {
         return (
@@ -37,6 +42,7 @@ function Header({
                                     <Link className="nav-link" to="/auth/logout">Logout</Link>
                                 </li>
                             </ul>
+                            <div id="welcome-greet">Welcome, {loggedUserData.email}</div>
                             <from className="search_form">
                                 <input type="text" className="form-control" placeholder="Search here..." />
                                 <button className="" type="submit">
