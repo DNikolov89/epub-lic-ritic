@@ -29,7 +29,7 @@ function Login() {
 
         if (email === '' || password === '') {
             return setEmptyImputs(true);
-        }
+        };
 
         try {
             let user = await authService.login(userData);
@@ -65,7 +65,7 @@ function Login() {
                         </span>
                     </p>
                     {emptyImputs && <div id="login-warning">All fields must be filled!</div>}
-                    {noUser && <div id="login-warning">User was not found in database!</div>}
+                    {noUser && <div id="login-warning">Wrong username or password!</div>}
                     <input id="login-button" type="submit" value="Login" />
                 </fieldset>
             </form>

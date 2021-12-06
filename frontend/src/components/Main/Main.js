@@ -1,11 +1,17 @@
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 
 import * as bookService from '../../services/bookService';
 
-function Main() {
+import InfoSection from "../InfoSection/InfoSection";
+import LastTreeBooks from "./LastTreeBooks/LastTreeBooks";
+
+function Main({
+  isLogged,
+}) {
 
   let [lastTreeBooks, setLastTreeBooks] = useState([]);
-
+  
   useEffect(() => {
     bookService.getLastTreeBooks()
       .then(books => setLastTreeBooks(books))
@@ -25,18 +31,18 @@ function Main() {
                     <div className="col-md-6">
                       <div className="detail-box">
                         <h5>
-                          Carousel-item-active
+                          Welcome to Epub/lic/ritic!
                         </h5>
                         <h1>
-                          For All Your <br />
-                          Reading Needs
+                          The best web app for <br />
+                          ebook recomendations.
                         </h1>
                         <p>
-                          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iste quam velit saepe dolorem deserunt quo quidem ad optio.
+                          Welcome! Epub/lic/ritic is made from book enthusiasts to book enthusiasts. If you want to know more about us - check the button below!
                         </p>
-                        <a href="">
-                          Read More
-                        </a>
+                        <Link to="/about">
+                          About us
+                        </Link>
                       </div>
                     </div>
                     <div className="col-md-6">
@@ -52,19 +58,16 @@ function Main() {
                   <div className="row">
                     <div className="col-md-6">
                       <div className="detail-box">
-                        <h5>
-                          First Item
-                        </h5>
-                        <h1>
-                          For All Your <br />
-                          Reading Needs
-                        </h1>
+                        <h2>
+                          If you haven't registered... <br />
+                          ...do it now!
+                        </h2>
                         <p>
-                          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iste quam velit saepe dolorem deserunt quo quidem ad optio.
+                          Register now to experience a world full of published and available ebooks!
                         </p>
-                        <a href="">
-                          Read More
-                        </a>
+                        <Link to="auth/register">
+                          Register
+                        </Link>
                       </div>
                     </div>
                     <div className="col-md-6">
@@ -75,34 +78,7 @@ function Main() {
                   </div>
                 </div>
               </div>
-              <div className="carousel-item">
-                <div className="container ">
-                  <div className="row">
-                    <div className="col-md-6">
-                      <div className="detail-box">
-                        <h5>
-                          Second Item
-                        </h5>
-                        <h1>
-                          For All Your <br />
-                          Reading Needs
-                        </h1>
-                        <p>
-                          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iste quam velit saepe dolorem deserunt quo quidem ad optio.
-                        </p>
-                        <a href="">
-                          Read More
-                        </a>
-                      </div>
-                    </div>
-                    <div className="col-md-6">
-                      <div className="img-box">
-                        <img src="images/slider-img.png" alt="" />
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
+
             </div>
             <div className="carousel_btn_box">
               <a className="carousel-control-prev" href="#customCarousel1" role="button" data-slide="prev">
@@ -118,50 +94,8 @@ function Main() {
         </section>
       </div>
 
-
-
-      <section className="client_section layout_padding">
-        <div className="container ">
-          <div className="heading_container heading_center">
-            <h2>
-              Last books uploaded
-            </h2>
-            <hr />
-          </div>
-          <div className="row">
-
-            {lastTreeBooks.map(book => {
-              return (
-                <div className="col-md-6 mx-auto">
-                  <div className="client_container ">
-                    <div className="detail-box">
-                      <p>
-                        {book.description}
-                      </p>
-                      <span>
-                        <i className="fa fa-quote-left" aria-hidden="true"></i>
-                      </span>
-                    </div>
-                    <div className="client_id">
-                      <div className="img-box">
-                        <img src={book.image} alt="" />
-                      </div>
-                      <div className="client_name">
-                        <h5>
-                          {book.title}
-                        </h5>
-                        <h6>
-                          {book.author}
-                        </h6>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              );
-            })}
-          </div>
-        </div>
-      </section>
+      {isLogged && <LastTreeBooks lastTreeBooks={lastTreeBooks}/>}
+      <InfoSection />
 
     </>
   );

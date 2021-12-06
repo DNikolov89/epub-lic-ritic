@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 function About() {
     return (
         <section className="about_section layout_padding">
@@ -12,15 +14,13 @@ function About() {
                         <div className="detail-box">
                             <div className="heading_container">
                                 <h2>
-                                    About Our Bookstore
+                                    Our mission
                                 </h2>
                             </div>
                             <p>
-                                At cumque tenetur iste molestiae, vel eum reiciendis assumenda! Numquam, repudiandae. Consequuntur obcaecati recusandae aliquam, amet doloribus eius dolores officiis cumque? Quibusdam praesentium pariatur sapiente mollitia, amet hic iusto voluptas! Iusto quo earum vitae excepturi, ipsam aliquid deleniti assumenda culpa deserunt.
+                                Our mission and sole purpose is to connect book authors and book lovers worldwide by giving them the opportunity to share ebooks that they have authored or just loved with other like-minded people. By visiting our website and sharing or upvoting ebooks you help ebooks widespreding and assessment which is verry helpfull for young authors and book lookers. Thank you for your interest and have a nice page-turning! :) <br/><br/> If you wish you can contact us below.
                             </p>
-                            <a href="">
-                                Read More
-                            </a>
+                            <Link to="/contacts">Contact us!</Link>
                         </div>
                     </div>
                 </div>

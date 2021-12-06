@@ -5,7 +5,6 @@ import { Routes, Route } from "react-router-dom";
 import Header from './components/Header/Header';
 import Main from './components/Main/Main';
 import ContactSection from './components/ContactSection/ContactSection';
-import InfoSection from './components/InfoSection/InfoSection';
 import Categories from './components/Categories/Categories';
 import Books from './components/Categories/Books/Books';
 import Details from './components/Categories/Details/Details';
@@ -24,77 +23,75 @@ function App() {
 
   let [isLogged, setIsLogged] = useState(false);
   let [loggedUserData, setLoggedUserData] = useState({});
-  let [bookCategory, setBookCategory] = useState(''); 
+  let [bookCategory, setBookCategory] = useState('');
 
+  const guestView = (
+    <>
+      <Header isLogged={isLogged} />
+
+      <AuthContext.Provider value={{ loggedUserData, setIsLogged, setLoggedUserData }}>
+        <Routes>
+          <Route path="/" element={<Main isLogged={isLogged}/>} />
+          <Route path="/about" element={<About />} />
+          <Route path="/contacts" element={<ContactSection />} />
+          <Route path="/auth/login" element={<Login />} />
+          <Route path="/auth/register" element={<Register />} />
+          <Route path="/auth/logout" element={<Logout />} />
+          <Route path="*" element={<ErrorPage />} />
+        </Routes>
+      </AuthContext.Provider>
+
+      <footer className="footer_section">
+        <div className="container">
+          <p>
+            &copy; <span id="displayYear"></span> All Rights Reserved By
+            <a href="https://html.design/">Free Html Templates</a>
+          </p>
+        </div>
+      </footer>
+    </>
+  );
+
+  const loggedUserView = (
+    <>
+      <Header isLogged={isLogged} loggedUserData={loggedUserData} />
+
+      <AuthContext.Provider value={{ loggedUserData, setIsLogged, setLoggedUserData }}>
+        <Routes>
+          <Route path="/" element={<Main isLogged={isLogged}/>} />
+          <Route path="/categories" element={<Categories setBookCategory={setBookCategory} />} />
+          <Route path="/categories/classic" element={<Books bookCategory={bookCategory} />} />
+          <Route path="/categories/science" element={<Books bookCategory={bookCategory} />} />
+          <Route path="/categories/history" element={<Books bookCategory={bookCategory} />} />
+          <Route path="/categories/biography" element={<Books bookCategory={bookCategory} />} />
+          <Route path="/categories/adventure" element={<Books bookCategory={bookCategory} />} />
+          <Route path="/categories/other" element={<Books bookCategory={bookCategory} />} />
+          <Route path="/categories/:genre/:bookId" element={<Details />} />
+          <Route path="/categories/:genre/:bookId/edit" element={<Edit />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/contacts" element={<ContactSection />} />
+          <Route path="/add-ebook" element={<AddEbook />} />
+          <Route path="/auth/logout" element={<Logout />} />
+          <Route path="*" element={<ErrorPage />} />
+        </Routes>
+      </AuthContext.Provider>
+
+      <footer className="footer_section">
+        <div className="container">
+          <p>
+            &copy; <span id="displayYear"></span> All Rights Reserved By
+            <a href="https://html.design/">Free Html Templates</a>
+          </p>
+        </div>
+      </footer>
+    </>
+  );
 
   if (isLogged) {
-    return (
-      <>
-        <Header isLogged={isLogged} loggedUserData={loggedUserData}/>
-
-        <AuthContext.Provider value={{ loggedUserData, setIsLogged, setLoggedUserData }}>
-        <Routes>
-            <Route path="/" element={<Main />} />
-            <Route path="/categories" element={<Categories setBookCategory={setBookCategory}/>} />
-            <Route path="/categories/classic" element={<Books bookCategory={bookCategory}/>} />
-            <Route path="/categories/science" element={<Books bookCategory={bookCategory}/>} />
-            <Route path="/categories/history" element={<Books bookCategory={bookCategory}/>} />
-            <Route path="/categories/biography" element={<Books bookCategory={bookCategory}/>} />
-            <Route path="/categories/adventure" element={<Books bookCategory={bookCategory}/>} />
-            <Route path="/categories/other" element={<Books bookCategory={bookCategory}/>} />
-            <Route path="/categories/:genre/:bookId" element={<Details />} />
-            <Route path="/categories/:genre/:bookId/edit" element={<Edit />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/contacts" element={<ContactSection />} />
-            <Route path="/info" element={<InfoSection />} />
-            <Route path="/add-ebook" element={<AddEbook />} />
-            <Route path="/auth/logout" element={<Logout />} />
-            <Route path="*" element={<ErrorPage />} />
-        </Routes>
-        </AuthContext.Provider>
-
-        <footer className="footer_section">
-          <div className="container">
-            <p>
-              &copy; <span id="displayYear"></span> All Rights Reserved By
-              <a href="https://html.design/">Free Html Templates</a>
-            </p>
-          </div>
-        </footer>
-      </>
-    );
+    return loggedUserView;
   } else {
-
-    return (
-      <>
-        <Header isLogged={isLogged} />
-
-        <AuthContext.Provider value={{ loggedUserData, setIsLogged, setLoggedUserData }}>
-        <Routes>
-            <Route path="/" element={<Main />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/contacts" element={<ContactSection />} />
-            <Route path="/info" element={<InfoSection />} />
-            <Route path="/auth/login" element={<Login />} />
-            <Route path="/auth/register" element={<Register />} />
-            <Route path="/auth/logout" element={<Logout />} />
-            <Route path="*" element={<ErrorPage />} />
-        </Routes>
-        </AuthContext.Provider>
-
-        <footer className="footer_section">
-          <div className="container">
-            <p>
-              &copy; <span id="displayYear"></span> All Rights Reserved By
-              <a href="https://html.design/">Free Html Templates</a>
-            </p>
-          </div>
-        </footer>
-      </>
-    )
-  }
-
-
+    return guestView;
+  };
 };
 
 

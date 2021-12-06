@@ -9,26 +9,14 @@ function ContactSection() {
                 Contact Us
               </h2>
             </div>
-            <form action="#">
-              <div>
-                <input type="text" placeholder="Name" />
-              </div>
-              <div>
-                <input type="email" placeholder="Email" />
-              </div>
-              <div>
-                <input type="text" placeholder="Pone Number" />
-              </div>
-              <div>
-                <input type="text" className="message-box" placeholder="Message" />
-              </div>
-              <div className="btn-box">
-                <button>
-                  SEND
-                </button>
-              </div>
-            </form>
+            <div>
+              <h4>epub/lic/ritic</h4>
+              <p>Bulgaria, Sofia, 23 Tsar Osvoboditel Str., fl. 3</p>
+              <p>Office phone: +359 02 348 291 </p>
+              <p>Email: epublicritic@gmail.com</p>
+            </div>
           </div>
+          
           <div className="col-md-6">
             <div className="img-box">
               <img src="images/contact-img.png" alt="" />

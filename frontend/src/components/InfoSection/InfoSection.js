@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 function InfoSection() {
     return (
         <section className="info_section layout_padding2">
@@ -9,21 +11,21 @@ function InfoSection() {
                                 About Us
                             </h4>
                             <p>
-                                Vitae aut explicabo fugit facere alias distinctio, exem commodi mollitia minusem dignissimos atque asperiores incidunt vel voluptate iste
+                                epub/lic/ritic is made from ebook enthusiasts to ebook enthusiasts. For more info visit our About us page.
                             </p>
                             <div className="info_social">
-                                <a href="">
+                                <Link to="">
                                     <i className="fa fa-facebook" aria-hidden="true"></i>
-                                </a>
-                                <a href="">
+                                </Link>
+                                <Link to="">
                                     <i className="fa fa-twitter" aria-hidden="true"></i>
-                                </a>
-                                <a href="">
+                                </Link>
+                                <Link to="">
                                     <i className="fa fa-linkedin" aria-hidden="true"></i>
-                                </a>
-                                <a href="">
+                                </Link>
+                                <Link to="">
                                     <i className="fa fa-instagram" aria-hidden="true"></i>
-                                </a>
+                                </Link>
                             </div>
                         </div>
                     </div>
@@ -33,40 +35,28 @@ function InfoSection() {
                                 Address
                             </h4>
                             <div className="contact_link_box">
-                                <a href="">
+                                <a href="https://goo.gl/maps/SFXMM97X1UVdeyqV9">
                                     <i className="fa fa-map-marker" aria-hidden="true"></i>
                                     <span>
-                                        Location
+                                        Bulgaria, Sofia, 23 Tsar Osvoboditel Str.
                                     </span>
                                 </a>
                                 <a href="">
                                     <i className="fa fa-phone" aria-hidden="true"></i>
                                     <span>
-                                        Call +01 1234567890
+                                        Call +359 02 348 291
                                     </span>
                                 </a>
                                 <a href="">
                                     <i className="fa fa-envelope" aria-hidden="true"></i>
                                     <span>
-                                        demo@gmail.com
+                                        epublicritic@gmail.com
                                     </span>
                                 </a>
                             </div>
                         </div>
                     </div>
-                    <div className="col-md-6 col-lg-3 info-col">
-                        <div className="info_contact">
-                            <h4>
-                                Newsletter
-                            </h4>
-                            <form action="#">
-                                <input type="text" placeholder="Enter email" />
-                                <button type="submit">
-                                    Subscribe
-                                </button>
-                            </form>
-                        </div>
-                    </div>
+                    
                     <div className="col-md-6 col-lg-3 info-col">
                         <div className="map_container">
                             <div className="map">
