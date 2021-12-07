@@ -15,14 +15,15 @@ const DeleteProfile = ({
     const onClickNoHandler = (e) => {
         e.preventDefault();
 
-        navigate('/');
+        navigate('/auth/edit-delete-profile');
     };
 
     const onClickYesHandler = async (e) => {
         e.preventDefault();
 
-        let responce = await userService.deleteUser(user._id);
+        await userService.deleteUser(user._id);
 
+        sessionStorage.removeItem('user');
         setIsLogged(false);
         setLoggedUserData({});
         navigate('/');

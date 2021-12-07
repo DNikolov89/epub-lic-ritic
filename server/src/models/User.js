@@ -20,30 +20,6 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    uploadedBooks: [
-        {
-            type: mongoose.Types.ObjectId,
-            ref: 'Book'
-        }
-    ],
-    votedBooks: [
-        {
-            type: mongoose.Types.ObjectId,
-            ref: 'Book'
-        }
-    ],
-    comentedBooks: [
-        {
-            type: mongoose.Types.ObjectId,
-            ref: 'Book'
-        }
-    ],
-    posts: [
-        {
-            type: mongoose.Types.ObjectId,
-            ref: 'Post'
-        }
-    ]
 });
 
 userSchema.pre('save', function (next) {

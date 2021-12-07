@@ -1,4 +1,4 @@
-import { useEffect, useLayoutEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Routes, Route } from "react-router-dom";
 
 import Header from './components/Header/Header';
@@ -18,6 +18,7 @@ import ErrorPage from './components/ErrorPage/ErrorPage';
 import Edit from './components/Categories/Details/Edit/Edit';
 import AuthContext from './contexts/AuthContext';
 import DeleteProfile from './components/Authentication/DeleteProfile/DeleteProfile';
+import Search from './components/Search/Search';
 
 
 function App() {
@@ -85,6 +86,7 @@ function App() {
           <Route path="/auth/logout" element={<Logout />} />
           <Route path="/auth/edit-delete-profile" element={<EditDeleteProfile user={loggedUserData} />} />
           <Route path="/auth/:userId/delete" element={<DeleteProfile user={loggedUserData} />} />
+          <Route path="/search/:inputText" element={<Search />} />
           <Route path="*" element={<ErrorPage />} />
         </Routes>
       </AuthContext.Provider>

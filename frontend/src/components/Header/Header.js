@@ -1,11 +1,24 @@
 import './Header.css'
 
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+
 
 function Header({
     isLogged,
     loggedUserData,
 }) {
+
+    let navigate = useNavigate();
+
+    const onSubmitSearchHandler = (e) => {
+        e.preventDefault();
+
+        let { inputText } = Object.fromEntries(new FormData(e.currentTarget));
+
+        e.target.children[0].value = "";
+
+        navigate(`/search/${inputText}`);
+    };
 
     const loggedUserNavigation = (
         <header className="header_section">
@@ -36,21 +49,21 @@ function Header({
                                 <Link className="nav-link" to="/my-ebooks">My e-books</Link>
                             </li>
                             <li className="nav-item">
-                                <Link className="nav-link" to="/auth/logout">Logout</Link>
+                                <Link className="nav-link" to="/about"> About us</Link>
                             </li>
                             <li className="nav-item">
-                                <Link className="nav-link" to="/about"> About us</Link>
+                                <Link className="nav-link" to="/auth/logout">Logout</Link>
                             </li>
                         </ul>
                         <Link to="/auth/edit-delete-profile">
-                        <div id="welcome-greet">Welcome, {isLogged && loggedUserData.userEmail}</div>
+                            <div id="welcome-greet">Welcome, {isLogged && loggedUserData.userEmail}</div>
                         </Link>
-                        <from className="search_form">
-                            <input type="text" className="form-control" placeholder="Search here..." />
+                        <form className="search_form" onSubmit={onSubmitSearchHandler}>
+                            <input type="text" name="inputText" className="form-control" placeholder="Search here..." />
                             <button className="" type="submit">
                                 <i className="fa fa-search" aria-hidden="true"></i>
                             </button>
-                        </from>
+                        </form>
                     </div>
                 </nav>
             </div>

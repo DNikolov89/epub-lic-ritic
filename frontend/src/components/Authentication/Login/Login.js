@@ -33,9 +33,10 @@ function Login() {
 
         try {
             let user = await authService.login(userData);
-            let {_id, firstName, lastName, email} = user;
-
+            
             if (user) {
+                let {_id, firstName, lastName, email} = user;
+                
                 sessionStorage.setItem('user', JSON.stringify({_id, firstName, lastName, userEmail: email}));
                 setIsLogged(true);
                 setLoggedUserData({_id, firstName, lastName, userEmail: email});

@@ -5,13 +5,13 @@ import * as bookServices from '../services/bookServices.js'
 
 const router = Router();
 
-router.post('/addebook', async (req, res) => {
+router.post('/:userId/addebook', async (req, res) => {
 
     let bookData = req.body;
-    console.log(bookData);
+    let { userId } = req.params
 
     try {
-        let newBook = await bookServices.addBook(bookData);
+        let newBook = await bookServices.addBook(bookData, userId);
 
         if (newBook) {
             res.json(newBook);
@@ -31,11 +31,11 @@ router.get('/my-ebooks/:userId', async (req, res) => {
         console.log(personalBooks);
 
         res.json(personalBooks);
-    } catch(err) {
-        res.status(404).json({err});
+    } catch (err) {
+        res.status(404).json({ err });
     }
 
-    
+
 })
 
 router.get('/classic', async (req, res) => {
@@ -128,6 +128,19 @@ router.post('/:bookId/vote', async (req, res) => {
     console.log(book)
 
     res.json({ ok: true })
+})
+
+router.post('/search/:data', async (req, res) => {
+    try {
+        let { data } = req.body;
+
+        let result = await bookServices.getAllByData(data);
+
+        res.json(result);
+    } catch (err) {
+        console.log(err);
+        res.status(404).json(err);
+    }
 })
 
 export default router;

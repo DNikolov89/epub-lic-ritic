@@ -42,4 +42,14 @@ export const getLastTreeBooks = () => {
 
     return fetch(`${SERVER_MAIN_URL}/ebooks/last-tree-books`)
         .then(res => res.json())
+};
+
+export const getAll = (data) => {
+
+    return fetch(`${SERVER_MAIN_URL}/ebooks/search/${data}`, {
+        method: "POST",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify({ data })
+    })
+        .then(res => res.json())
 }

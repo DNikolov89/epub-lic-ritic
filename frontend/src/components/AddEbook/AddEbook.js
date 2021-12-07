@@ -27,7 +27,7 @@ function AddEbook() {
         let userId = loggedUserData._id;
 
         try {
-            let jsonResponce = await fetch(`${SERVER_MAIN_URL}/ebooks/addebook`, {
+            let jsonResponce = await fetch(`${SERVER_MAIN_URL}/ebooks/${userId}/addebook`, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ ...data, _ownerId: userId })
@@ -36,10 +36,9 @@ function AddEbook() {
             let newBook = await jsonResponce.json();
 
             if (newBook) {
-                navigate('/categories');
+                navigate(`/categories/${newBook.genre}`);
             }
 
-            console.log(newBook);
         } catch (err) {
             console.log(err);
         }
