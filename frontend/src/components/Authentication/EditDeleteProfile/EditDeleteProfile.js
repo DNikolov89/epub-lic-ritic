@@ -10,7 +10,7 @@ const EditDeleteProfile = ({
     user,
 }) => {
 
-    let { setLoggedUserData, setIsLogged } = useContext(AuthContext);
+    let { setLoggedUserData } = useContext(AuthContext);
 
     let [passwordMissmatch, setPasswordMissmatch] = useState(false);
     let [emptyFields, setEmptyFields] = useState(false);
@@ -35,8 +35,14 @@ const EditDeleteProfile = ({
         }
 
         let changedUser = await userService.changeUserData({ firstName, lastName, email, password, _id: user._id });
+        let _id = changedUser._id;
+        firstName = changedUser.firstName;
+        lastName = changedUser.lastName;
+        let userEmail = changedUser.email;
+        
 
-        setLoggedUserData(changedUser);
+        setLoggedUserData({_id, firstName, lastName, userEmail});
+        sessionStorage.setItem('user', JSON.stringify({_id, firstName, lastName, userEmail}));
 
         navigate('/');
     };
@@ -61,7 +67,7 @@ const EditDeleteProfile = ({
                     <p className="field">
                         <label htmlFor="email">Email</label>
                         <span className="input">
-                            <input type="text" name="email" id="email" placeholder="Email" defaultValue={user.email} />
+                            <input type="text" name="email" id="email" placeholder="Email" defaultValue={user.userEmail} />
                         </span>
                     </p>
                     <p className="field">

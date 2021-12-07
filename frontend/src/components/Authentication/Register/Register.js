@@ -42,14 +42,14 @@ function Register() {
             if (existingUser) {
                 return setuserIsRegistered(true);
             };
-        
+
             let registeredUser = await authService.register(data);
-            let {_id, firstName, lastName, email: userEmail} = registeredUser;
+            let { _id, firstName, lastName, email: userEmail } = registeredUser;
 
             if (registeredUser) {
-                sessionStorage.setItem('user', JSON.stringify({_id, firstName, lastName, userEmail}));
+                sessionStorage.setItem('user', JSON.stringify({ _id, firstName, lastName, userEmail }));
                 setIsLogged(true);
-                setLoggedUserData({_id, firstName, lastName, userEmail: email});
+                setLoggedUserData({ _id, firstName, lastName, userEmail });
                 navigate('/');
             }
         } catch (err) {
@@ -93,8 +93,8 @@ function Register() {
                             <input type="password" name="confirmPassword" id="repeat-pass" placeholder="Repeat Password" />
                         </span>
                     </p>
-                        {passwordMissmatch && <div style={{ color: 'red' }}>Password missmatched!</div>}
-                        {emptyFields && <div style={{ color: 'red' }}>All fields must be filled!</div>}
+                    {passwordMissmatch && <div style={{ color: 'red' }}>Password missmatched!</div>}
+                    {emptyFields && <div style={{ color: 'red' }}>All fields must be filled!</div>}
                     <input id="register-button" type="submit" value="Register" />
                 </fieldset>
             </form>

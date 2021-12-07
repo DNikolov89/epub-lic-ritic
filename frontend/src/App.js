@@ -34,9 +34,6 @@ function App() {
     }
   }, [user])
 
-  console.log('render')
-  console.log(loggedUserData)
-  console.log(isLogged)
 
   const guestView = (
     <>
