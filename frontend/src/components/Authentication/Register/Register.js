@@ -44,10 +44,12 @@ function Register() {
             };
         
             let registeredUser = await authService.register(data);
+            let {_id, firstName, lastName, email: userEmail} = registeredUser;
 
             if (registeredUser) {
+                sessionStorage.setItem('user', JSON.stringify({_id, firstName, lastName, userEmail}));
                 setIsLogged(true);
-                setLoggedUserData(registeredUser);
+                setLoggedUserData({_id, firstName, lastName, userEmail: email});
                 navigate('/');
             }
         } catch (err) {

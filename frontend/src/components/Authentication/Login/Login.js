@@ -33,10 +33,13 @@ function Login() {
 
         try {
             let user = await authService.login(userData);
+            let {_id, firstName, lastName, email: userEmail} = user;
+            let sessionUser = {_id, firstName, lastName, userEmail};
 
             if (user) {
+                sessionStorage.setItem('user', JSON.stringify(sessionUser));
                 setIsLogged(true);
-                setLoggedUserData(user);
+                setLoggedUserData(sessionUser);
                 navigate('/');
             } else {
                 setNoUser(true);

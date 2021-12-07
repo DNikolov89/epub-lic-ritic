@@ -1,6 +1,5 @@
-import { useState } from 'react';
+import { useEffect, useLayoutEffect, useState } from 'react';
 import { Routes, Route } from "react-router-dom";
-
 
 import Header from './components/Header/Header';
 import Main from './components/Main/Main';
@@ -17,22 +16,27 @@ import Login from './components/Authentication/Login/Login';
 import EditDeleteProfile from './components/Authentication/EditDeleteProfile/EditDeleteProfile';
 import ErrorPage from './components/ErrorPage/ErrorPage';
 import Edit from './components/Categories/Details/Edit/Edit';
-
-
 import AuthContext from './contexts/AuthContext';
 import DeleteProfile from './components/Authentication/DeleteProfile/DeleteProfile';
 
+
 function App() {
 
-  let [isLogged, setIsLogged] = useState(false);
   let [loggedUserData, setLoggedUserData] = useState({});
+  let [isLogged, setIsLogged] = useState(false);
   let [bookCategory, setBookCategory] = useState('');
+  let user = sessionStorage.getItem('user');
 
-  const changeUserData = (newUserData) => {
-    setLoggedUserData(newUserData)
-  }
+  useEffect(() => {
+    if (user) {
+      setIsLogged(true);
+      setLoggedUserData(JSON.parse(user))
+    }
+  }, [user])
 
+  console.log('render')
   console.log(loggedUserData)
+  console.log(isLogged)
 
   const guestView = (
     <>
@@ -40,7 +44,7 @@ function App() {
 
       <AuthContext.Provider value={{ loggedUserData, setIsLogged, setLoggedUserData }}>
         <Routes>
-          <Route path="/" element={<Main isLogged={isLogged}/>} />
+          <Route path="/" element={<Main isLogged={isLogged} />} />
           <Route path="/about" element={<About />} />
           <Route path="/contacts" element={<ContactSection />} />
           <Route path="/auth/login" element={<Login />} />
@@ -67,7 +71,7 @@ function App() {
 
       <AuthContext.Provider value={{ loggedUserData, setIsLogged, setLoggedUserData }}>
         <Routes>
-          <Route path="/" element={<Main isLogged={isLogged}/>} />
+          <Route path="/" element={<Main isLogged={isLogged} />} />
           <Route path="/categories" element={<Categories setBookCategory={setBookCategory} />} />
           <Route path="/categories/classic" element={<Books bookCategory={bookCategory} />} />
           <Route path="/categories/science" element={<Books bookCategory={bookCategory} />} />
@@ -78,7 +82,7 @@ function App() {
           <Route path="/categories/:genre/:bookId" element={<Details />} />
           <Route path="/categories/:genre/:bookId/edit" element={<Edit />} />
           <Route path="/add-ebook" element={<AddEbook />} />
-          <Route path="/my-ebooks" element={<MyEbooks userId={loggedUserData._id}/>} />
+          <Route path="/my-ebooks" element={<MyEbooks userId={loggedUserData._id} />} />
           <Route path="/about" element={<About />} />
           <Route path="/contacts" element={<ContactSection />} />
           <Route path="/auth/logout" element={<Logout />} />
@@ -99,11 +103,14 @@ function App() {
     </>
   );
 
-  if (isLogged) {
-    return loggedUserView;
-  } else {
-    return guestView;
-  };
+  return (
+    <>
+      {isLogged
+        ? loggedUserView
+        : guestView
+      }
+    </>
+  )
 };
 
 

@@ -9,6 +9,7 @@ function Logout() {
     let { setIsLogged, setLoggedUserData } = useContext(AuthContext);
 
     useEffect(() => {
+        sessionStorage.removeItem('user');
         setLoggedUserData({});
         setIsLogged(false);
     }, []);

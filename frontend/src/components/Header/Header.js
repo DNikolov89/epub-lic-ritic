@@ -43,7 +43,7 @@ function Header({
                             </li>
                         </ul>
                         <Link to="/auth/edit-delete-profile">
-                        <div id="welcome-greet">Welcome, {isLogged && loggedUserData.email}</div>
+                        <div id="welcome-greet">Welcome, {isLogged && loggedUserData.userEmail}</div>
                         </Link>
                         <from className="search_form">
                             <input type="text" className="form-control" placeholder="Search here..." />
