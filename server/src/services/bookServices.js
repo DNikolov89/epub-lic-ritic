@@ -4,6 +4,8 @@ export const addBook = async (bookData) => await Book.create(bookData);
 
 export const getAllByGenre = async (genre) => await Book.find({ genre });
 
+export const getPersonalBooks = async (userId) => await Book.find({ _ownerId: userId });
+
 export const getOneBook = async (bookId) => await Book.findById(bookId);
 
 export const deleteOne = async (bookId) => await Book.findByIdAndDelete(bookId);

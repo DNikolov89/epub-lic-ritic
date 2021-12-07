@@ -33,13 +33,18 @@ function Header({
                                 <Link className="nav-link" to="/add-ebook">Add e-book</Link>
                             </li>
                             <li className="nav-item">
-                                <Link className="nav-link" to="/about"> About us</Link>
+                                <Link className="nav-link" to="/my-ebooks">My e-books</Link>
                             </li>
                             <li className="nav-item">
                                 <Link className="nav-link" to="/auth/logout">Logout</Link>
                             </li>
+                            <li className="nav-item">
+                                <Link className="nav-link" to="/about"> About us</Link>
+                            </li>
                         </ul>
+                        <Link to="/auth/edit-delete-profile">
                         <div id="welcome-greet">Welcome, {isLogged && loggedUserData.email}</div>
+                        </Link>
                         <from className="search_form">
                             <input type="text" className="form-control" placeholder="Search here..." />
                             <button className="" type="submit">

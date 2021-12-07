@@ -34,7 +34,7 @@ function Register() {
 
         if (firstName === '' || lastName === '' || email === '' || password === '' || confirmPassword === '') {
             return setEmptyFields(true);
-        }
+        };
 
         try {
             let existingUser = await userService.getOneByEmail(email);

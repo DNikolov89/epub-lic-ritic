@@ -1,37 +1,39 @@
-import { useState, useEffect } from 'react';
+import { useState, useLayoutEffect, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
-import './Books.css';
+import { SERVER_MAIN_URL } from '../../constants';
 
-import { SERVER_MAIN_URL } from '../../../constants';
-
-function Books({
-  bookCategory,
-}) {
+const MyEbooks = ({
+  userId,
+}) => {
 
   let [books, setBooks] = useState([]);
+  let [hasBooks, setHasBooks] = useState(false);
 
   useEffect(() => {
-    fetch(`${SERVER_MAIN_URL}/ebooks/${bookCategory}`)
+    fetch(`${SERVER_MAIN_URL}/ebooks/my-ebooks/${userId}`)
       .then(res => res.json())
       .then(books => {
         setBooks(books);
+
+        if (books.length !== 0) {
+          setHasBooks(true);
+        };
       })
-      .catch(err => console.log(err))
+      .catch(err => console.log(err));
   }, []);
 
 
   return (
-    <section className="catagory_section layout_padding">
+    < section className="catagory_section layout_padding" >
       <div className="catagory_container">
         <div className="container ">
           <div className="heading_container heading_center">
             <h2>
-              {bookCategory}
+              My ebooks
             </h2>
           </div>
           <div className="row">
-
             {books.map(book => {
               return (
                 <div key={book._id} className="col-sm-6 col-md-4 ">
@@ -52,20 +54,19 @@ function Books({
                       <p>
                         Rating: {book.rating}
                       </p>
-                        <Link to={`/categories/${bookCategory}/${book._id}`}>
+                      <Link to={`/categories/${book.genre}/${book._id}`}>
                         <button id="details-button">Details</button>
-                        </Link>
+                      </Link>
                     </div>
                   </div>
                 </div>
               )
             })}
-
           </div>
         </div>
       </div>
-    </section>
+    </section >
   );
 };
 
-export default Books;
+export default MyEbooks;

@@ -781,7 +781,9 @@ a:focus {
   position: relative;
   background-color: #ffffff;
   text-align: center;
+  margin-top: 10%;
 }
+
 
 .footer_section p {
   color: #063547;

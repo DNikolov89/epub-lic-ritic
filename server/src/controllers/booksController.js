@@ -22,6 +22,22 @@ router.post('/addebook', async (req, res) => {
 
 });
 
+router.get('/my-ebooks/:userId', async (req, res) => {
+    let { userId } = req.params;
+
+    try {
+        let personalBooks = await bookServices.getPersonalBooks(userId);
+
+        console.log(personalBooks);
+
+        res.json(personalBooks);
+    } catch(err) {
+        res.status(404).json({err});
+    }
+
+    
+})
+
 router.get('/classic', async (req, res) => {
 
     let books = await bookServices.getAllByGenre('classic');
@@ -66,7 +82,7 @@ router.get('/other', async (req, res) => {
 
 router.get('/last-tree-books', async (req, res) => {
     let books = await bookServices.getLastTree();
-    
+
     res.json(books);
 });
 
@@ -104,14 +120,14 @@ router.put('/:bookId/edit', async (req, res) => {
 
 router.post('/:bookId/vote', async (req, res) => {
     let { bookId, userId, vote } = req.body;
- 
+
     let book = await bookServices.getOneBook(bookId);
-    book.votes.push({userId, vote});
+    book.votes.push({ userId, vote });
     book.save();
 
     console.log(book)
 
-    res.json({ok: true})
+    res.json({ ok: true })
 })
 
 export default router;

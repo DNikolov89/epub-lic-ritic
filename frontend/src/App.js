@@ -10,20 +10,29 @@ import Books from './components/Categories/Books/Books';
 import Details from './components/Categories/Details/Details';
 import About from './components/About/About';
 import AddEbook from './components/AddEbook/AddEbook';
+import MyEbooks from './components/MyEbooks/MyEbooks';
 import Logout from './components/Authentication/Logout/Logout';
 import Register from './components/Authentication/Register/Register';
 import Login from './components/Authentication/Login/Login';
+import EditDeleteProfile from './components/Authentication/EditDeleteProfile/EditDeleteProfile';
 import ErrorPage from './components/ErrorPage/ErrorPage';
 import Edit from './components/Categories/Details/Edit/Edit';
 
 
 import AuthContext from './contexts/AuthContext';
+import DeleteProfile from './components/Authentication/DeleteProfile/DeleteProfile';
 
 function App() {
 
   let [isLogged, setIsLogged] = useState(false);
   let [loggedUserData, setLoggedUserData] = useState({});
   let [bookCategory, setBookCategory] = useState('');
+
+  const changeUserData = (newUserData) => {
+    setLoggedUserData(newUserData)
+  }
+
+  console.log(loggedUserData)
 
   const guestView = (
     <>
@@ -68,10 +77,13 @@ function App() {
           <Route path="/categories/other" element={<Books bookCategory={bookCategory} />} />
           <Route path="/categories/:genre/:bookId" element={<Details />} />
           <Route path="/categories/:genre/:bookId/edit" element={<Edit />} />
+          <Route path="/add-ebook" element={<AddEbook />} />
+          <Route path="/my-ebooks" element={<MyEbooks userId={loggedUserData._id}/>} />
           <Route path="/about" element={<About />} />
           <Route path="/contacts" element={<ContactSection />} />
-          <Route path="/add-ebook" element={<AddEbook />} />
           <Route path="/auth/logout" element={<Logout />} />
+          <Route path="/auth/edit-delete-profile" element={<EditDeleteProfile user={loggedUserData} />} />
+          <Route path="/auth/:userId/delete" element={<DeleteProfile user={loggedUserData} />} />
           <Route path="*" element={<ErrorPage />} />
         </Routes>
       </AuthContext.Provider>
