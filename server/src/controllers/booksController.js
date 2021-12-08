@@ -118,17 +118,16 @@ router.put('/:bookId/edit', async (req, res) => {
     res.json(editedBook);
 });
 
+
 router.post('/:bookId/vote', async (req, res) => {
     let { bookId, userId, vote } = req.body;
 
     let book = await bookServices.getOneBook(bookId);
-    book.votes.push({ userId, vote });
+    book.votes.push({ votedUser: userId, vote });
     book.save();
 
-    console.log(book)
-
     res.json({ ok: true })
-})
+});
 
 router.post('/search/:data', async (req, res) => {
     try {
@@ -141,6 +140,8 @@ router.post('/search/:data', async (req, res) => {
         console.log(err);
         res.status(404).json(err);
     }
-})
+});
+
+
 
 export default router;

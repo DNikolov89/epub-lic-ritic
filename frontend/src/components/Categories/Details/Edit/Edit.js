@@ -14,7 +14,7 @@ const Edit = () => {
     useEffect(() => {
         bookService.getOne(currentBook.genre, currentBook._id)
             .then(res => setCurrentBook(res))
-    }, []);
+    }, [currentBook.genre, currentBook._id]);
 
 
 

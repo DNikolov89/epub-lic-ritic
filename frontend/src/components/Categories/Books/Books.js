@@ -18,7 +18,7 @@ function Books({
         setBooks(books);
       })
       .catch(err => console.log(err))
-  }, []);
+  }, [bookCategory]);
 
 
   return (

@@ -12,8 +12,8 @@ function Details() {
 
     let [book, setBook] = useState({});
     let [votes, setVotes] = useState(0);
-    let [hasVoted, setHasVoted] = useState(false);
     let [isOwner, setIsOwner] = useState(false);
+    let [userHasAlreadyVoted, setUserHasAlreadyVoted] = useState(false);
     let { bookId, bookCategory } = useParams();
     let { loggedUserData } = useContext(AuthContext);
 
@@ -29,11 +29,19 @@ function Details() {
     }, []);
 
     useEffect(() => {
+
         if (book.votes) {
-            let calcVotes = ((book.votes.reduce((a, b) => a + b.vote, 0)) / book.votes.length).toFixed(2);
+
+            let votedUser = book.votes?.find(vote => vote.votedUser === loggedUserData._id);
+
+            if (votedUser) {
+                setUserHasAlreadyVoted(true);
+            };
+
+            let calcVotes = ((book.votes?.reduce((a, b) => a + b.vote, 0)) / book.votes.length).toFixed(2);
             setVotes(calcVotes);
         }
-    }, [book, hasVoted]);
+    }, [book, votes]);
 
     if (!isOwner) {
         if (loggedUserData._id === book._ownerId) {
@@ -50,7 +58,7 @@ function Details() {
         navigate(`/categories/${book.genre}`);
     };
 
-    const onClickVoteHandler = async (e) => {
+    const onClickVoteHandler = (e) => {
         e.preventDefault();
 
         let vote = e.target.value;
@@ -61,7 +69,9 @@ function Details() {
             .then(res => console.log(res))
             .catch(err => console.log(err))
 
-        setHasVoted(true);
+
+        e.currentTarget.parentNode.innerHTML = "<h6>Thank you</h6>";
+
     };
 
     const votingStars = () => {
@@ -116,8 +126,8 @@ function Details() {
                 </div>
             }
 
-            {!isOwner && hasVoted && <div>Thank you for your vote!</div>}
-            {!isOwner && !hasVoted && votingStars()}
+            {!isOwner && userHasAlreadyVoted && <div>Thank you for your vote!</div>}
+            {!isOwner && !userHasAlreadyVoted && votingStars()}
         </div >
     );
 };

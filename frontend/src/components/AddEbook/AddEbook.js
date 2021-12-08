@@ -36,7 +36,7 @@ function AddEbook() {
             let newBook = await jsonResponce.json();
 
             if (newBook) {
-                navigate(`/categories/${newBook.genre}`);
+                navigate(`/categories/${data.genre}`);
             }
 
         } catch (err) {

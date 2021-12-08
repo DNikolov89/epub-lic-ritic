@@ -38,21 +38,21 @@ function InfoSection() {
                                 <a href="https://goo.gl/maps/SFXMM97X1UVdeyqV9">
                                     <i className="fa fa-map-marker" aria-hidden="true"></i>
                                     <span>
-                                        Bulgaria, Sofia, 23 Tsar Osvoboditel Str.
+                                        Bulgaria, Sofia, 23 Tsar Osvoboditel
                                     </span>
                                 </a>
-                                <a href="">
+                                <Link to="">
                                     <i className="fa fa-phone" aria-hidden="true"></i>
                                     <span>
                                         Call +359 02 348 291
                                     </span>
-                                </a>
-                                <a href="">
+                                </Link>
+                                <Link to="">
                                     <i className="fa fa-envelope" aria-hidden="true"></i>
                                     <span>
                                         epublicritic@gmail.com
                                     </span>
-                                </a>
+                                </Link>
                             </div>
                         </div>
                     </div>

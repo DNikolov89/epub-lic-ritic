@@ -12,7 +12,7 @@ function Logout() {
         sessionStorage.removeItem('user');
         setLoggedUserData({});
         setIsLogged(false);
-    }, []);
+    }, [setLoggedUserData, setIsLogged]);
 
 
     return (
