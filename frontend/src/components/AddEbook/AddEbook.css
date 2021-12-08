@@ -1,3 +1,7 @@
 #add-book {
     text-align: center;   
 }
+
+#error-message {
+    color: red;
+}

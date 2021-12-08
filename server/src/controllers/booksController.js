@@ -1,7 +1,6 @@
 import { Router } from 'express';
-import mongoose from 'mongoose';
 
-import * as bookServices from '../services/bookServices.js'
+import * as bookServices from '../services/bookServices.js';
 
 const router = Router();
 
@@ -11,32 +10,36 @@ router.post('/:userId/addebook', async (req, res) => {
     let { userId } = req.params
 
     try {
-        let newBook = await bookServices.addBook(bookData, userId);
 
+        let newBook = await bookServices.addBook(bookData, userId);
+        
         if (newBook) {
             res.json(newBook);
-        }
+        } else {
+            throw new Error({ message: 'Could not create new book record.' })
+        };
+
     } catch (err) {
-        console.log(err)
+        console.log(err.message);
+        res.status(404).json({type: "error", message: "Could not create new book record."});
     };
 
 });
 
 router.get('/my-ebooks/:userId', async (req, res) => {
+
     let { userId } = req.params;
 
     try {
+
         let personalBooks = await bookServices.getPersonalBooks(userId);
 
-        console.log(personalBooks);
-
         res.json(personalBooks);
+
     } catch (err) {
         res.status(404).json({ err });
-    }
-
-
-})
+    };
+});
 
 router.get('/classic', async (req, res) => {
 

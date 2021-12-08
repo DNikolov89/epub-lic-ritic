@@ -23,22 +23,29 @@
 }
 
 #edit-button {
-    background-color:seagreen;
-    color: #FFFFFF;
-    border-radius:15px
+    display: inline-block;
+    padding: 5px 35px;
+    background-color: #44b89d;
+    color: #ffffff;
+    border-radius: 45px;
+    border: 1px solid #44b89d;
+    transition: all 0.3s;
+    margin-top: 15px;
+    margin-right: 5px;
 }
 
 #delete-button {
-    background-color:red;
-    color: #FFFFFF;
-    border-radius:15px
+    display: inline-block;
+    padding: 5px 35px;
+    background-color: red;
+    color: #ffffff;
+    border-radius: 45px;
+    border: 1px solid red;
+    transition: all 0.3s;
+    margin-top: 15px;
+    margin-left: 5px;
 }
 
-#vote-button {
-    background-color: darkgoldenrod;
-    color: #FFFFFF;
-    border-radius:15px
-}
 
 .txt-center {
     text-align: center;

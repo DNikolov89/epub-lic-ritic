@@ -9,6 +9,7 @@ import { useNavigate } from 'react-router-dom';
 
 function AddEbook() {
     let [linkWarning, setLinkWarning] = useState(false);
+    let [error, setError] = useState({});
     let { loggedUserData } = useContext(AuthContext);
     let navigate = useNavigate();
 
@@ -34,10 +35,15 @@ function AddEbook() {
             });
 
             let newBook = await jsonResponce.json();
+            
+            if (newBook.type === 'error') {
+                setError(newBook);
+                throw new Error(newBook.message);
+            };
 
             if (newBook) {
                 navigate(`/categories/${data.genre}`);
-            }
+            };
 
         } catch (err) {
             console.log(err);
@@ -100,6 +106,7 @@ function AddEbook() {
                             {linkWarning && <p>Only place links if you are an author of the book or the book has no copyright. Otherwise links will be removed.</p>}
                         </span>
                     </p>
+                    {error && <div id="error-message">{error.message}</div>}
                     <input id="register-button" type="submit" value="Add e-book!" />
                 </fieldset>
             </form>
