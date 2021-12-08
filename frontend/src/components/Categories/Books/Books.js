@@ -1,7 +1,7 @@
+import './Books.css';
+
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-
-import './Books.css';
 
 import { SERVER_MAIN_URL } from '../../../constants';
 
@@ -10,12 +10,17 @@ function Books({
 }) {
 
   let [books, setBooks] = useState([]);
+  let [error, setError] = useState({});
 
   useEffect(() => {
     fetch(`${SERVER_MAIN_URL}/ebooks/${bookCategory}`)
       .then(res => res.json())
       .then(books => {
-        setBooks(books);
+        if (books.type === 'error') {
+          setError(books);
+        } else {
+          setBooks(books);
+        };
       })
       .catch(err => console.log(err))
   }, [bookCategory]);
@@ -31,7 +36,7 @@ function Books({
             </h2>
           </div>
           <div className="row">
-
+            {error && <div>{error.message}</div>}
             {books.map(book => {
               return (
                 <div key={book._id} className="col-sm-6 col-md-4 ">

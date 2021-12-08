@@ -40,8 +40,9 @@ export const vote = (bookId, userId, vote) => {
 
 export const getLastTreeBooks = () => {
 
-    return fetch(`${SERVER_MAIN_URL}/ebooks/last-tree-books`)
+    return fetch(`${SERVER_MAIN_URL}/ebooks/last-three-books`)
         .then(res => res.json())
+
 };
 
 export const getAll = (data) => {
@@ -53,4 +54,3 @@ export const getAll = (data) => {
     })
         .then(res => res.json())
 };
-
