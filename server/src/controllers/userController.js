@@ -34,9 +34,9 @@ router.put('/changeUserData', async (req, res) => {
     }
 })
 
-router.get('/deleteUser/:userId', async (req, res) => {
+router.delete('/deleteUser/:userId', async (req, res) => {
     try {
-        let userId = req.params.userId;
+        let userId = req.body.userId;
         
         let result = await User.findByIdAndDelete(userId);
 

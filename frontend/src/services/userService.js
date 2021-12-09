@@ -38,7 +38,12 @@ export const getOneByEmail = async (email) => {
 
 export const deleteUser = async (userId) => {
 
-    let jsonResponce = await fetch(`${SERVER_MAIN_URL}/user/deleteUser/${userId}`);
+    let jsonResponce = await fetch(`${SERVER_MAIN_URL}/user/deleteUser/${userId}`, {
+        method: "DELETE",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify({ userId })
+    });
+    
     let responce = await jsonResponce.json();
 
     return responce;
