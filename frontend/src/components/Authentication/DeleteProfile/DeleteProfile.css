@@ -1,4 +1,7 @@
 #confirm-delete-profile-dialog-wrapper {
+    font-weight: bold;
+    font-family: monospace;
+    font-size: 17px;
     margin: auto;
     margin-top: 5%;
     border-radius: 25px;

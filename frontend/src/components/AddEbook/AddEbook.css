@@ -1,7 +1,34 @@
 #add-book {
-    text-align: center;   
+    text-align: center;
+    margin-top: 30px;   
 }
 
 #error-message {
     color: red;
+}
+
+#ebook-form #author {
+    margin-right: 14px;
+}
+
+#ebook-form #year {
+    margin-right: -5px;
+}
+
+#ebook-form #image {
+    margin-right: 37px;
+}
+
+#ebook-form #description {
+    margin-right: 44px;
+}
+
+#ebook-form #link {
+    margin-right: 65px;
+}
+
+.add-ebook-input-fields {
+    border-radius: 15px;
+    border-width: thin;
+    margin-left: 15px;
 }

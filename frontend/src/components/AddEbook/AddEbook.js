@@ -59,7 +59,7 @@ function AddEbook() {
                     <p className="field">
                         <label htmlFor="genre">Genre</label>
                         <span className="input">
-                        <select name="genre" id="genre">
+                        <select className="add-ebook-input-fields" name="genre" id="genre">
                             <option value="classic">Classic</option>
                             <option value="science">Science</option>
                             <option value="history">History</option>
@@ -72,37 +72,37 @@ function AddEbook() {
                     <p className="field">
                         <label htmlFor="title">Title</label>
                         <span className="input">
-                            <input type="text" name="title" id="title" placeholder="Title of the book" />
+                            <input className="add-ebook-input-fields" type="text" name="title" id="title" placeholder="Title of the book" />
                         </span>
                     </p>
                     <p className="field">
                         <label htmlFor="author">Author</label>
                         <span className="input">
-                            <input type="text" name="author" id="author" placeholder="Author name" />
+                            <input className="add-ebook-input-fields" type="text" name="author" id="author" placeholder="Author name" />
                         </span>
                     </p>
                     <p className="field">
                         <label htmlFor="year">Year</label>
                         <span className="input">
-                            <input type="text" name="year" id="year" placeholder="Year of publishing" />
+                            <input className="add-ebook-input-fields" type="text" name="year" id="year" placeholder="Year of publishing" />
                         </span>
                     </p>
                     <p className="field">
                         <label htmlFor="image">Image link</label>
                         <span className="input">
-                            <input type="text" name="image" id="image" placeholder="Image link" />
+                            <input className="add-ebook-input-fields" type="text" name="image" id="image" placeholder="Image link" />
                         </span>
                     </p>
                     <p className="field">
                         <label htmlFor="description">Description</label>
                         <span className="input">
-                            <input type="text" name="description" id="description" placeholder="Description in few simple sentences..." />
+                            <input className="add-ebook-input-fields" type="text" name="description" id="description" placeholder="Description in few simple sentences..." />
                         </span>
                     </p>
                     <p className="field">
                         <label htmlFor="link">Download link</label>
                         <span className="input">
-                            <input onClick={linkOnClickWarning} type="text" name="link" id="link" placeholder="Place download link" />
+                            <input className="add-ebook-input-fields" onClick={linkOnClickWarning} type="text" name="link" id="link" placeholder="Place download link" />
                             {linkWarning && <p>Only place links if you are an author of the book or the book has no copyright. Otherwise links will be removed.</p>}
                         </span>
                     </p>
