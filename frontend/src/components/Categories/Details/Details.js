@@ -120,7 +120,7 @@ function Details() {
             }
 
             {!isOwner && userHasAlreadyVoted && <div>Thank you for your vote!</div>}
-            {!isOwner && !userHasAlreadyVoted && votingStars()}
+            {!isOwner && !userHasAlreadyVoted && <h5 id="voting-section"> Vote: {votingStars()}</h5>}
         </div >
     );
 };

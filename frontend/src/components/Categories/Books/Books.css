@@ -15,3 +15,8 @@ img.books-section {
     transition: all 0.3s;
     margin-top: 15px;
 }
+
+#no-books-message {
+    margin: auto;
+    margin-top: 50px;
+}

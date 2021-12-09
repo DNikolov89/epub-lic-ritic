@@ -4,19 +4,26 @@
 }
 
 #details-img {
+    height: 300px;
     display: block;
     margin-left: auto;
     margin-right: auto;
     margin-top: 1%;
     margin-bottom: auto;
-    width: 30%;
-    height: auto;
 }
 
 #details-content-wrapper {
     padding-top: 10px;
     text-align: center;
 }
+
+#voting-section {
+    border-style: 10px solid black;
+    background-color: #6d92a1;
+    margin-left: 45%;
+    margin-right: 44%;
+}
+
 
 #details-button-wrapper {
     text-align: center;
@@ -46,11 +53,15 @@
     margin-left: 5px;
 }
 
+#details-content-wrapper h5:nth-child(6) {
+    margin-left: 35%;
+    margin-right: 35%;
+}
 
 .txt-center {
     text-align: center;
     font-size: 36px;
-    margin-left: 856px ;
+    
 }
 .hide {
     display: none;
