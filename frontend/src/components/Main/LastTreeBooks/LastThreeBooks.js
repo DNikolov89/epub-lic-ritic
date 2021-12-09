@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 
-const LastTreeBooks = ({
+const LastThreeBooks = ({
     lastTreeBooks,
 }) => {
     return (
@@ -49,4 +49,4 @@ const LastTreeBooks = ({
     );
 };
 
-export default LastTreeBooks;
+export default LastThreeBooks;

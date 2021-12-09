@@ -10,7 +10,7 @@ const Search = () => {
 
     useEffect(() => {
         bookService.getAll(inputText)
-            .then(res => setResults(res))
+            .then(books => setResults(books))
             .catch(err => console.log(err))
     }, [inputText]);
 
@@ -40,9 +40,6 @@ const Search = () => {
                                             </h6>
                                             <p>
                                                 {book.description}
-                                            </p>
-                                            <p>
-                                                Rating: {book.rating}
                                             </p>
                                             <Link to={`/categories/${book.genre}/${book._id}`}>
                                                 <button id="details-button">Details</button>

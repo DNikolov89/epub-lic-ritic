@@ -14,5 +14,10 @@ export const deleteOne = async (bookId) => await Book.findByIdAndDelete(bookId);
 
 export const editBook = async (bookId, bookData) => await Book.findByIdAndUpdate(bookId, bookData);
 
-export const getLastTree = async () => await Book.find().sort({ 'createdAt': -1 }).limit(3);
+export const getLastTree = async () => {
+    let books = await Book.find();
+    let lastThree = books.slice(-3);
+
+    return lastThree;
+};
 

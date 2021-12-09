@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import * as bookService from '../../services/bookService';
 
 import InfoSection from "../InfoSection/InfoSection";
-import LastTreeBooks from "./LastTreeBooks/LastTreeBooks";
+import LastThreeBooks from "./LastTreeBooks/LastThreeBooks";
 
 function Main({
   isLogged,
@@ -94,7 +94,7 @@ function Main({
         </section>
       </div>
 
-      {isLogged && <LastTreeBooks lastTreeBooks={lastTreeBooks}/>}
+      {isLogged && <LastThreeBooks lastTreeBooks={lastTreeBooks}/>}
       <InfoSection />
 
     </>
