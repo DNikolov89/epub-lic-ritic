@@ -62,35 +62,35 @@ function Register() {
             <form id="register-form" method="POST" onSubmit={submitHandler}>
                 <fieldset>
                     <legend>Register Form</legend>
-                    <p className="field">
+                    <p className="regiter-form-field">
                         <label htmlFor="firstName">First Name</label>
                         <span className="input">
-                            <input type="text" name="firstName" id="firstName" placeholder="First Name" />
+                            <input className="regiter-form-field-inputs" type="text" name="firstName" id="register-input-firstName" placeholder="First Name" />
                         </span>
                     </p>
-                    <p className="field">
+                    <p className="regiter-form-field">
                         <label htmlFor="lastName">Last Name</label>
                         <span className="input">
-                            <input type="text" name="lastName" id="lastName" placeholder="Last Name" />
+                            <input className="regiter-form-field-inputs" type="text" name="lastName" id="register-input-lastName" placeholder="Last Name" />
                         </span>
                     </p>
-                    <p className="field">
+                    <p className="regiter-form-field">
                         <label htmlFor="email">Email</label>
                         <span className="input">
-                            <input type="text" name="email" id="email" placeholder="Email" />
+                            <input className="regiter-form-field-inputs" type="text" name="email" id="register-input-email" placeholder="Email" />
                         </span>
                     </p>
                     {userIsRegistered && <div style={{ color: 'red' }}>User with that email already exists!</div>}
-                    <p className="field">
+                    <p className="regiter-form-field">
                         <label htmlFor="password">Password</label>
                         <span className="input">
-                            <input type="password" name="password" id="password" placeholder="Password" />
+                            <input className="regiter-form-field-inputs" type="password" name="password" id="register-input-password" placeholder="Password" />
                         </span>
                     </p>
-                    <p className="field">
+                    <p className="regiter-form-field">
                         <label htmlFor="repeat-pass">Repeat Password</label>
                         <span className="input">
-                            <input type="password" name="confirmPassword" id="repeat-pass" placeholder="Repeat Password" />
+                            <input className="regiter-form-field-inputs" type="password" name="confirmPassword" id="register-input-repeat-pass" placeholder="Repeat Password" />
                         </span>
                     </p>
                     {passwordMissmatch && <div style={{ color: 'red' }}>Password missmatched!</div>}

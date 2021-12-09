@@ -16,10 +16,10 @@ import Login from './components/Authentication/Login/Login';
 import EditDeleteProfile from './components/Authentication/EditDeleteProfile/EditDeleteProfile';
 import ErrorPage from './components/ErrorPage/ErrorPage';
 import Edit from './components/Categories/Details/Edit/Edit';
+import Delete from './components/Categories/Details/Delete/Delete';
 import AuthContext from './contexts/AuthContext';
 import DeleteProfile from './components/Authentication/DeleteProfile/DeleteProfile';
 import Search from './components/Search/Search';
-
 
 function App() {
 
@@ -79,6 +79,7 @@ function App() {
           <Route path="/categories/other" element={<Books bookCategory={bookCategory} />} />
           <Route path="/categories/:genre/:bookId" element={<Details />} />
           <Route path="/categories/:genre/:bookId/edit" element={<Edit />} />
+          <Route path="/categories/:genre/:bookId/delete" element={<Delete />} />
           <Route path="/add-ebook" element={<AddEbook />} />
           <Route path="/my-ebooks" element={<MyEbooks userId={loggedUserData._id} />} />
           <Route path="/about" element={<About />} />

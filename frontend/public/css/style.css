@@ -778,10 +778,10 @@ a:focus {
 
 /* footer section*/
 .footer_section {
-  position: relative;
+  position:relative;
+  bottom: 0;
   background-color: #ffffff;
   text-align: center;
-  margin-top: 10%;
 }
 
 

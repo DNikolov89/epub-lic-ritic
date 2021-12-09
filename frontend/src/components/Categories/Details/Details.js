@@ -49,15 +49,6 @@ function Details() {
         };
     };
 
-
-    const onClickDeleteHandler = async (e) => {
-        e.preventDefault();
-
-        await bookService.deleteOneBook(bookId);
-
-        navigate(`/categories/${book.genre}`);
-    };
-
     const onClickVoteHandler = (e) => {
         e.preventDefault();
 
@@ -121,7 +112,9 @@ function Details() {
                         <Link to={`/categories/${book.genre}/${bookId}/edit`}>
                             <button id="edit-button">Edit</button>
                         </Link>
-                        <button onClick={onClickDeleteHandler} id="delete-button">Delete</button>
+                        <Link to={`/categories/${book.genre}/${bookId}/delete`}>
+                        <button id="delete-button">Delete</button>
+                        </Link>
                     </div>
                 </div>
             }

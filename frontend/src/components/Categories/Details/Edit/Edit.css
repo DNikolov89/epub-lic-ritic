@@ -1,3 +1,30 @@
 #ebook-edit-form {
     text-align: center;
 }
+
+.edit-book-input-fields {
+    border-radius: 15px;
+    border-width: thin;
+    margin-left: 10px;
+}
+
+.edit-book-span-field #author {
+    margin-right: 15px;
+}
+
+.edit-book-span-field #year {
+    margin-right: -5px;
+}
+
+.edit-book-span-field #image {
+    margin-right: 36px;
+}
+
+.edit-book-span-field #description {
+    margin-right: 41px;
+}
+
+.edit-book-span-field #link {
+    margin-right: 60px;
+}
+

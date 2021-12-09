@@ -1,3 +1,5 @@
+import './DeleteProfile.css';
+
 import { useNavigate } from "react-router-dom";
 import { useContext } from "react";
 
@@ -32,10 +34,10 @@ const DeleteProfile = ({
 
 
     return (
-        <div>
-            <div>Are you sure you want to delete your profile, {user.firstName}?</div>
-            <button onClick={onClickYesHandler}>Yes</button>
-            <button onClick={onClickNoHandler}>No</button>
+        <div id="confirm-delete-profile-dialog-wrapper">
+            <div id="confirm-elete-profile-question">Are you sure you want to delete your profile, {user.firstName}?</div>
+            <button id="confirm-yes-delete-profile-button" onClick={onClickYesHandler}>Yes</button>
+            <button id="confirm-no-delete-profile-button" onClick={onClickNoHandler}>No</button>
         </div>
     )
 };

@@ -58,13 +58,13 @@ function Login() {
                     <p className="field">
                         <label htmlFor="email">Email</label>
                         <span className="input">
-                            <input type="text" name="email" id="email" placeholder="Email" />
+                            <input className="login-input-fields" type="text" name="email" id="email" placeholder="Email" />
                         </span>
                     </p>
                     <p className="field">
                         <label htmlFor="password">Password</label>
                         <span className="input">
-                            <input type="password" name="password" id="password" placeholder="Password" />
+                            <input className="login-input-fields" type="password" name="password" id="password" placeholder="Password" />
                         </span>
                     </p>
                     {emptyImputs && <div id="login-warning">All fields must be filled!</div>}

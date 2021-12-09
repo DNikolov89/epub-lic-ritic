@@ -36,8 +36,8 @@ const Edit = () => {
                     <legend>Edit e-book</legend>
                     <p className="field">
                         <label htmlFor="genre">Genre</label>
-                        <span className="input">
-                            <select name="genre" id="genre" defaultValue={currentBook.genre}>
+                        <span className="edit-book-span-field">
+                            <select className="edit-book-input-fields" name="genre" id="genre" defaultValue={currentBook.genre}>
                                 <option value="classic">Classic</option>
                                 <option value="science">Science</option>
                                 <option value="history">History</option>
@@ -49,38 +49,38 @@ const Edit = () => {
                     </p>
                     <p className="field">
                         <label htmlFor="title">Title</label>
-                        <span className="input">
-                            <input type="text" name="title" id="title" placeholder="Title of the book" defaultValue={currentBook.title} />
+                        <span className="edit-book-span-field">
+                            <input className="edit-book-input-fields" type="text" name="title" id="title" placeholder="Title of the book" defaultValue={currentBook.title} />
                         </span>
                     </p>
                     <p className="field">
                         <label htmlFor="author">Author</label>
-                        <span className="input">
-                            <input type="text" name="author" id="author" placeholder="Author name" defaultValue={currentBook.author} />
+                        <span className="edit-book-span-field">
+                            <input className="edit-book-input-fields" type="text" name="author" id="author" placeholder="Author name" defaultValue={currentBook.author} />
                         </span>
                     </p>
                     <p className="field">
                         <label htmlFor="year">Year</label>
-                        <span className="input">
-                            <input type="text" name="year" id="year" placeholder="Year of publishing" defaultValue={currentBook.year} />
+                        <span className="edit-book-span-field">
+                            <input className="edit-book-input-fields" type="text" name="year" id="year" placeholder="Year of publishing" defaultValue={currentBook.year} />
                         </span>
                     </p>
                     <p className="field">
                         <label htmlFor="image">Image link</label>
-                        <span className="input">
-                            <input type="text" name="image" id="image" placeholder="Image link" defaultValue={currentBook.image} />
+                        <span className="edit-book-span-field">
+                            <input className="edit-book-input-fields" type="text" name="image" id="image" placeholder="Image link" defaultValue={currentBook.image} />
                         </span>
                     </p>
                     <p className="field">
                         <label htmlFor="description">Description</label>
-                        <span className="input">
-                            <input type="text" name="description" id="description" placeholder="Description in few simple sentences..." defaultValue={currentBook.description} />
+                        <span className="edit-book-span-field">
+                            <input className="edit-book-input-fields" type="text" name="description" id="description" placeholder="Description in few simple sentences..." defaultValue={currentBook.description} />
                         </span>
                     </p>
                     <p className="field">
                         <label htmlFor="link">Download link</label>
-                        <span className="input">
-                            <input type="text" name="link" id="link" placeholder="Place download link" defaultValue={currentBook.link} />
+                        <span className="edit-book-span-field">
+                            <input className="edit-book-input-fields" type="text" name="link" id="link" placeholder="Place download link" defaultValue={currentBook.link} />
                         </span>
                     </p>
                     <input id="edit-button" type="submit" value="Edit e-book!" />

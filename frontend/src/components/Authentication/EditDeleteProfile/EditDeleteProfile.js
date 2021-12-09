@@ -55,31 +55,31 @@ const EditDeleteProfile = ({
                     <p className="field">
                         <label htmlFor="firstName">First Name</label>
                         <span className="input">
-                            <input type="text" name="firstName" id="firstName" placeholder="First Name" defaultValue={user.firstName} />
+                            <input className="edit-delete-profile-inputs" type="text" name="firstName" id="firstName" placeholder="First Name" defaultValue={user.firstName} />
                         </span>
                     </p>
                     <p className="field">
                         <label htmlFor="lastName">Last Name</label>
                         <span className="input">
-                            <input type="text" name="lastName" id="lastName" placeholder="Last Name" defaultValue={user.lastName} />
+                            <input className="edit-delete-profile-inputs" type="text" name="lastName" id="lastName" placeholder="Last Name" defaultValue={user.lastName} />
                         </span>
                     </p>
                     <p className="field">
                         <label htmlFor="email">Email</label>
                         <span className="input">
-                            <input type="text" name="email" id="email" placeholder="Email" defaultValue={user.userEmail} />
+                            <input className="edit-delete-profile-inputs" type="text" name="email" id="email" placeholder="Email" defaultValue={user.userEmail} />
                         </span>
                     </p>
                     <p className="field">
                         <label htmlFor="password">Password</label>
                         <span className="input">
-                            <input type="password" name="password" id="password" placeholder="Password" />
+                            <input className="edit-delete-profile-inputs" type="password" name="password" id="password" placeholder="Password" />
                         </span>
                     </p>
-                    <p className="field">
+                    <p id="repeat-password-line" className="field">
                         <label htmlFor="repeat-pass">Repeat Password</label>
                         <span className="input">
-                            <input type="password" name="confirmPassword" id="repeat-pass" placeholder="Repeat Password" />
+                            <input className="edit-delete-profile-inputs" type="password" name="confirmPassword" id="repeat-pass" placeholder="Repeat Password" />
                         </span>
                     </p>
 

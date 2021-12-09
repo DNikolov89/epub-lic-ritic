@@ -1,4 +1,5 @@
 #login-section {
+    margin-top: 30px;
     text-align: center;
 }
 
@@ -15,4 +16,19 @@
 
 #login-warning {
     color: red;
+}
+
+#login-section #email {
+    margin-right: -1px;
+    margin-left: 10px;
+}
+
+#login-section #password {
+    margin-right: 28px;
+    margin-left: 10px;
+}
+
+.login-input-fields {
+    border-radius: 15px;
+    border-width: thin;
 }

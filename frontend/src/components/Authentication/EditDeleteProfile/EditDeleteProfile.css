@@ -23,5 +23,28 @@
 }
 
 #edit-delete-profile-fieldset {
-    
+    margin-top: 30px;
 }
+
+#repeat-password-line {
+    margin-right: 45px;
+}
+
+.edit-delete-profile-inputs {
+    margin-left: 5px;
+    border-radius: 15px;
+    border-width: thin;
+}
+
+.edit-delete-profile-inputs#email {
+    margin-left: 45px;
+}
+
+.edit-delete-profile-inputs#password {
+    margin-left: 15px;
+}
+
+
+
+
+
