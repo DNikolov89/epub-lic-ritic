@@ -25,7 +25,7 @@ const Edit = () => {
 
         bookService.editBook({ ...bookData, _id: bookId })
             .then(data => setCurrentBook(data))
-            .then(navigate(`/categories/${currentBook.genre}/${currentBook._id}`))
+            .then(navigate(`/categories/${bookData.genre}/${currentBook._id}`))
             .catch(err => console.log(err))
     };
 

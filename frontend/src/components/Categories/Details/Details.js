@@ -1,7 +1,7 @@
 import './Details.css';
 
 import { useEffect, useState, useContext } from 'react';
-import { Link, useParams, useNavigate } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 
 import { SERVER_MAIN_URL } from '../../../constants';
 import AuthContext from '../../../contexts/AuthContext';
@@ -17,7 +17,6 @@ function Details() {
     let { bookId, bookCategory } = useParams();
     let { loggedUserData } = useContext(AuthContext);
 
-    let navigate = useNavigate();
 
     useEffect(() => {
         fetch(`${SERVER_MAIN_URL}/ebooks/${bookCategory}/${bookId}`)
@@ -26,7 +25,7 @@ function Details() {
                 setBook(res);
             })
             .catch(err => console.log(err));
-    }, []);
+    }, [bookCategory, bookId]);
 
     useEffect(() => {
 
@@ -41,7 +40,7 @@ function Details() {
             let calcVotes = ((book.votes?.reduce((a, b) => a + b.vote, 0)) / book.votes.length).toFixed(2);
             setVotes(calcVotes);
         }
-    }, [book, votes]);
+    }, [book, votes, loggedUserData._id]);
 
     if (!isOwner) {
         if (loggedUserData._id === book._ownerId) {

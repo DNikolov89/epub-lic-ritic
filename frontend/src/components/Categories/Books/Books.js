@@ -1,20 +1,20 @@
 import './Books.css';
 
 import { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 
 import { SERVER_MAIN_URL } from '../../../constants';
 
-function Books({
-  bookCategory,
-}) {
+function Books() {
+
+  let { genre } = useParams();
 
   let [books, setBooks] = useState([]);
   let [error, setError] = useState({});
   let [noBooks, setNoBooks] = useState(false);
 
   useEffect(() => {
-    fetch(`${SERVER_MAIN_URL}/ebooks/${bookCategory}`)
+    fetch(`${SERVER_MAIN_URL}/ebooks/${genre}`)
       .then(res => res.json())
       .then(books => {
 
@@ -23,9 +23,11 @@ function Books({
         };
 
         books.map(book => {
+
           if (book.votes !== []) {
             return book.votes = (book.votes?.reduce((a, b) => a + b.vote, 0) / book.votes.length).toFixed(2);
-          }
+          };
+
         });
 
         if (books.type === 'error') {
@@ -36,7 +38,7 @@ function Books({
       })
       .catch(err => console.log(err))
 
-  }, [bookCategory]);
+  }, [genre]);
 
   return (
     <>
@@ -45,7 +47,7 @@ function Books({
           <div className="container ">
             <div className="heading_container heading_center">
               <h2>
-                {bookCategory}
+                {genre.charAt(0).toUpperCase().concat(genre.slice(1))}
               </h2>
             </div>
             <div className="row">
@@ -72,7 +74,7 @@ function Books({
                         <p>
                           Rating: {isNaN(book.votes) ? "No rating yet" : book.votes}
                         </p>
-                        <Link to={`/categories/${bookCategory}/${book._id}`}>
+                        <Link to={`/categories/${genre}/${book._id}`}>
                           <button id="details-button">Details</button>
                         </Link>
                       </div>

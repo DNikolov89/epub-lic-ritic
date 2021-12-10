@@ -25,7 +25,6 @@ function App() {
 
   let [loggedUserData, setLoggedUserData] = useState({});
   let [isLogged, setIsLogged] = useState(false);
-  let [bookCategory, setBookCategory] = useState('');
   let user = sessionStorage.getItem('user');
 
   useEffect(() => {
@@ -70,13 +69,8 @@ function App() {
       <AuthContext.Provider value={{ loggedUserData, setIsLogged, setLoggedUserData }}>
         <Routes>
           <Route path="/" element={<Main isLogged={isLogged} />} />
-          <Route path="/categories" element={<Categories setBookCategory={setBookCategory} />} />
-          <Route path="/categories/classic" element={<Books bookCategory={bookCategory} />} />
-          <Route path="/categories/science" element={<Books bookCategory={bookCategory} />} />
-          <Route path="/categories/history" element={<Books bookCategory={bookCategory} />} />
-          <Route path="/categories/biography" element={<Books bookCategory={bookCategory} />} />
-          <Route path="/categories/adventure" element={<Books bookCategory={bookCategory} />} />
-          <Route path="/categories/other" element={<Books bookCategory={bookCategory} />} />
+          <Route path="/categories" element={<Categories />} />
+          <Route path="/categories/:genre" element={<Books />} />
           <Route path="/categories/:genre/:bookId" element={<Details />} />
           <Route path="/categories/:genre/:bookId/edit" element={<Edit />} />
           <Route path="/categories/:genre/:bookId/delete" element={<Delete />} />
