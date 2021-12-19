@@ -80,7 +80,7 @@ function Books() {
                       </div>
                     </div>
                   </div>
-                )
+                );
               })}
 
             </div>

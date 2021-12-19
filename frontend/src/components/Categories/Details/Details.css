@@ -18,7 +18,7 @@
 }
 
 #voting-section {
-    border-style: 10px solid black;
+    border-radius: 15px;
     background-color: #6d92a1;
     margin-left: 45%;
     margin-right: 44%;

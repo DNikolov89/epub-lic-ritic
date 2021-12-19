@@ -37,8 +37,7 @@ function AddEbook() {
             let newBook = await jsonResponce.json();
             
             if (newBook.type === 'error') {
-                setError(newBook);
-                throw new Error(newBook.message);
+                return setError(newBook);
             };
 
             if (newBook) {

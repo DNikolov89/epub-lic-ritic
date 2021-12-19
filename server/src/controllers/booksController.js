@@ -8,20 +8,19 @@ router.post('/:userId/addebook', async (req, res) => {
 
     let bookData = req.body;
     let { userId } = req.params
-
+    
     try {
-
         let newBook = await bookServices.addBook(bookData, userId);
-
-        if (newBook) {
+        
+        if (!newBook.Error._message) {
             res.json(newBook);
         } else {
             throw new Error({ message: 'Could not create new book record.' })
         };
 
     } catch (err) {
-        console.log(err.message);
-        res.status(404).json({ type: "error", message: "Could not create new book record." });
+        console.log(err);
+        res.status(404).json({ type: "error", message: err.message });
     };
 
 });

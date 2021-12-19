@@ -20,6 +20,7 @@ import Delete from './components/Categories/Details/Delete/Delete';
 import AuthContext from './contexts/AuthContext';
 import DeleteProfile from './components/Authentication/DeleteProfile/DeleteProfile';
 import Search from './components/Search/Search';
+import Footer from './components/Footer/Footer';
 
 function App() {
 
@@ -51,14 +52,7 @@ function App() {
         </Routes>
       </AuthContext.Provider>
 
-      <footer className="footer_section">
-        <div className="container">
-          <p>
-            &copy; <span id="displayYear"></span> All Rights Reserved By
-            <a href="https://html.design/">Free Html Templates</a>
-          </p>
-        </div>
-      </footer>
+      <Footer />
     </>
   );
 
@@ -72,7 +66,7 @@ function App() {
           <Route path="/categories" element={<Categories />} />
           <Route path="/categories/:genre" element={<Books />} />
           <Route path="/categories/:genre/:bookId" element={<Details />} />
-          <Route path="/categories/:genre/:bookId/edit" element={<Edit />} />
+          <Route path="/categories/:genre/:bookId/edit" element={<Edit userId={loggedUserData._id}/>} />
           <Route path="/categories/:genre/:bookId/delete" element={<Delete />} />
           <Route path="/add-ebook" element={<AddEbook />} />
           <Route path="/my-ebooks" element={<MyEbooks userId={loggedUserData._id} />} />
@@ -86,14 +80,7 @@ function App() {
         </Routes>
       </AuthContext.Provider>
 
-      <footer className="footer_section">
-        <div className="container">
-          <p>
-            &copy; <span id="displayYear"></span> All Rights Reserved By
-            <a href="https://html.design/">Free Html Templates</a>
-          </p>
-        </div>
-      </footer>
+      <Footer />
     </>
   );
 

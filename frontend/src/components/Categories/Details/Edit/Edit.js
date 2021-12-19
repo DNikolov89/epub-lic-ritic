@@ -5,7 +5,9 @@ import { useState, useEffect } from "react";
 
 import * as bookService from '../../../../services/bookService';
 
-const Edit = () => {
+const Edit = ({ 
+    userId
+ }) => {
 
     let { genre, bookId } = useParams();
     let [currentBook, setCurrentBook] = useState({ genre, _id: bookId });
@@ -15,8 +17,11 @@ const Edit = () => {
         bookService.getOne(currentBook.genre, currentBook._id)
             .then(res => setCurrentBook(res))
     }, [currentBook.genre, currentBook._id]);
+    
 
-
+    if (currentBook._ownerId !== userId) {
+        navigate('/error');
+    };
 
     const ebookSubmitEditHandler = (e) => {
         e.preventDefault();
